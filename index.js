@@ -33,7 +33,7 @@ async function run (){
             const services = await cursor.toArray();
             res.send(services);
         })
-        // GET services API
+        // GET manageOrders API
         app.get('/manageOrders', async(req, res) =>{
             const cursor = orderCollection.find({});
             const allorders = await cursor.toArray();
@@ -88,12 +88,19 @@ async function run (){
         })
 
         // update statuss
-        app.put('/updateStatus/:id', async (req, res) =>{
-            const id = req.params.id;
-            const updatedStatus = req.body.status;
-            console.log(updatedStatus);
-            
-        })
+        // app.put('/updateStatus/:id', (req, res) =>{
+        //     const id = req.params.id;
+        //     const updatedStatus = req.body.status;
+        //     const filter = {_id: ObjectId(req.params.id)};
+        //     console.log(updatedStatus);
+        //     orderCollection.updateOne(filter, {$set: {status: updatedStatus},})
+        //     .then((result) =>{
+        //         console.log(result);
+        //     })           
+        // })
+
+
+
         // delete Order
         app.delete('/deleteService/:id', async (req, res) => {
             const result = await serviceCollection.deleteOne({_id: ObjectId(req.params.id)});
